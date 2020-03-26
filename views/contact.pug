@@ -1,0 +1,182 @@
+doctype html
+html.no-js
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    link(rel='shortcut icon', href='img/fav.png')
+    meta(name='author', content='CodePixar')
+    meta(name='description', content='')
+    meta(name='keywords', content='')
+    meta(charset='UTF-8')
+    title Shoppers Stop
+    link(rel='stylesheet', href='/css/linearicons.css')
+    link(rel='stylesheet', href='/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/css/themify-icons.css')
+    link(rel='stylesheet', href='/css/bootstrap.css')
+    link(rel='stylesheet', href='/css/owl.carousel.css')
+    link(rel='stylesheet', href='/css/nice-select.css')
+    link(rel='stylesheet', href='/css/nouislider.min.css')
+    link(rel='stylesheet', href='/css/ion.rangeSlider.css')
+    link(rel='stylesheet', href='/css/ion.rangeSlider.skinFlat.css')
+    link(rel='stylesheet', href='/css/magnific-popup.css')
+    link(rel='stylesheet', href='/css/main.css')
+    link(rel='stylesheet', href='/css/personal.css')
+  body
+    // Start Header Area
+    header.header_area.sticky-header
+      .main_menu
+        nav.navbar.navbar-expand-lg.navbar-light.main_box
+          .container
+            a.navbar-brand.logo_h(href='/')
+              img(src='/img/fav.png' alt="logo") 
+            a.navbar-brand.logo_h(href='/')
+              h2.heading_1 SHOPPERS STOP
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            #navbarSupportedContent.collapse.navbar-collapse.offset
+              ul.nav.navbar-nav.menu_nav.ml-auto
+                li.nav-item
+                  a.nav-link(href='/') Home
+                li.nav-item.submenu.dropdown
+                  a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false') Shop
+                  ul.dropdown-menu
+                    li.nav-item
+                      a.nav-link(href='/product/all_products') All Products
+                    li.nav-item
+                      a.nav-link(href='/product/category/Sports') Sports 
+                    li.nav-item
+                      a.nav-link(href='/product/category/Formal') Formal
+                    li.nav-item
+                      a.nav-link(href='/product/category/Sneakers') Sneakers
+                    li.nav-item
+                      a.nav-link(href='/product/category/Casual') Casual
+                li.nav-item.active
+                  a.nav-link(href='/contact') Contact
+                li.nav-item.submenu.dropdown
+                  a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                    span.lnr.lnr-user#user-icon
+                  ul.dropdown-menu
+                    li.nav-item
+                      a.nav-link(href='/users/orders') Orders
+                    li.nav-item
+                      a.nav-link(href='/') Tracking
+                    li.nav-item
+                      a.nav-link(href='/users/wishlist') Wishlist
+                    li.nav-item
+                      a.nav-link(href='/users/logout') Logout    
+              ul.nav.navbar-nav.navbar-right
+                li.nav-item
+                  a.cart(href='/users/cart')
+                    span.lnr.lnr-cart.cart_icon
+                li.nav-item
+                  button.search
+                    span#search.lnr.lnr-magnifier
+      #search_input_box.search_input
+        .container
+          form.d-flex.justify-content-between
+            input#search_input.form-control(type='text', placeholder='Search Here')
+            button.btn(type='submit')
+            span#close_search.lnr.lnr-cross(title='Close Search')
+    // End Header Area
+    // Start Banner Area
+    section.banner-area.organic-breadcrumb
+      .container
+        .breadcrumb-banner.d-flex.flex-wrap.align-items-center.justify-content-end
+          .col-first
+            h1 Contact Us
+            nav.d-flex.align-items-center
+              a(href='/')
+                | Home
+                span.lnr.lnr-arrow-right
+              a(href='/contact') Contact
+              // End Banner Area
+    .container
+      != messages('message',locals)
+    // ================Contact Area =================
+    section.contact_area.section_gap_bottom
+      .container
+        #map  
+        .row
+          .col-lg-4
+            .contact_info
+              .info_item
+                i.lnr.lnr-home
+                h6 Tiruchirappalli, Tamil Nadu
+                p National Institute of Technology
+              .info_item
+                i.lnr.lnr-phone-handset
+                h6
+                  a(href='#') +91 - 9009108777
+                p Monday to Friday 9am to 6 pm
+              .info_item
+                i.lnr.lnr-envelope
+                h6
+                  a(href='#') jmenghani13@gmail.com
+                p Send us your query anytime!
+          .col-lg-8
+            form#contactFor.row.contact_form(action='/contact', method='POST')
+              .col-md-6
+                .form-group
+                  input#name.form-control(type='text', name='name', placeholder='Enter your name', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Enter your name'")
+                .form-group
+                  input#email.form-control(type='email', name='email', placeholder='Enter email address', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Enter email address'")
+                .form-group
+                  input#subject.form-control(type='text', name='subject', placeholder='Enter Subject', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Enter Subject'")
+              .col-md-6
+                .form-group
+                  textarea#message.form-control(name='message', rows='1', placeholder='Enter Message', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Enter Message'")
+              .col-md-12.text-right
+                button.primary-btn(type='submit', value='submit') Send Message
+    // ================Contact Area =================
+    // start footer Area
+    footer.footer-area.section_gap
+      .container
+        .row
+          .col-lg-4
+          .col-lg-4.col-md-6.col-sm-6
+            .single-footer-widget
+              h6.footer_1 About Us
+              p.footer_1
+                | SHOPPERS STOP is your place for any type of shoes from hundreds of brands.
+                | Our legacy includes more than 10-years of craftmanship, a passion for quality, with a mission to continue to inspire people.
+        .row
+          .col-lg-4
+          .col-lg-4.col-md-6.col-sm-6
+            .single-footer-widget
+              h6.footer_1 Follow Us
+              p.footer_1 Let us be social
+              .footer-social.d-flex.align-items-center.icons_1
+                a(href='#')
+                  i.fa.fa-facebook
+                a(href='#')
+                  i.fa.fa-twitter
+                a(href='#')
+                  i.fa.fa-instagram
+                a(href='#')
+                  i.fa.fa-google
+        .row
+          .col-lg-2
+          .col-lg-8.col-md-6.col-sm-6
+            .footer-bottom.d-flex.justify-content-center.align-items-center.flex-wrap
+              p.footer-text.m-0
+                | Copyright ©
+                script.
+                  document.write(new Date().getFullYear());
+                |  All rights reserved | This website is made with 
+                i.fa.fa-heart-o(aria-hidden='true')
+                |  by Jayesh Menghani
+                // End footer Area
+            script(src='/js/vendor/jquery-2.2.4.min.js')
+            script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js', integrity='sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4', crossorigin='anonymous')
+            script(src='/js/vendor/bootstrap.min.js')
+            script(src='/js/jquery.ajaxchimp.min.js')
+            script(src='/js/jquery.nice-select.min.js')
+            script(src='/js/jquery.sticky.js')
+            script(src='/js/nouislider.min.js')
+            script(src='/js/jquery.magnific-popup.min.js')
+            script(src='/js/owl.carousel.min.js')
+            script(src='/js/personal.js')
+            script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDQpAg0NxDLSaQLhAW8x6YJRGb-l8mrOYk&callback=initMap')
+            script(src='/js/gmaps.min.js')
+            script(src='/js/main.js')

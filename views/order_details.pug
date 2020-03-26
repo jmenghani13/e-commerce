@@ -1,0 +1,300 @@
+doctype html
+html.no-js
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    link(rel='shortcut icon', href='/img/fav.png')
+    meta(name='author', content='CodePixar')
+    meta(name='description', content='')
+    meta(name='keywords', content='')
+    meta(charset='UTF-8')
+    title Shoppers Stop
+    link(rel='stylesheet', href='/css/linearicons.css')
+    link(rel='stylesheet', href='/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/css/themify-icons.css')
+    link(rel='stylesheet', href='/css/bootstrap.css')
+    link(rel='stylesheet', href='/css/owl.carousel.css')
+    link(rel='stylesheet', href='/css/nice-select.css')
+    link(rel='stylesheet', href='/css/nouislider.min.css')
+    link(rel='stylesheet', href='/css/ion.rangeSlider.css')
+    link(rel='stylesheet', href='/css/ion.rangeSlider.skinFlat.css')
+    link(rel='stylesheet', href='/css/magnific-popup.css')
+    link(rel='stylesheet', href='/css/main.css')
+    link(rel='stylesheet', href='/css/personal.css')
+  body(onload="update_sub_total()")
+    // Start Header Area
+    header.header_area.sticky-header
+      .main_menu
+        nav.navbar.navbar-expand-lg.navbar-light.main_box
+          .container
+            a.navbar-brand.logo_h(href='/')
+              img(src='/img/fav.png' alt="logo") 
+            a.navbar-brand.logo_h(href='/')
+              h2.heading_1 SHOPPERS STOP
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            #navbarSupportedContent.collapse.navbar-collapse.offset
+              ul.nav.navbar-nav.menu_nav.ml-auto
+                li.nav-item
+                  a.nav-link(href='/') Home
+                if user
+                  if user.username == "admin"
+                    li.nav-item.submenu.dropdown.active
+                      a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false') Manage
+                      ul.dropdown-menu
+                        li.nav-item
+                          a.nav-link(href='/admin/users') Users
+                        li.nav-item.active
+                          a.nav-link(href='/admin/orders') Orders 
+                        li.nav-item
+                          a.nav-link(href='/product/add_product') Add Product
+                        li.nav-item
+                          a.nav-link(href='/product/all_products') All Products
+                  else 
+                    li.nav-item.submenu.dropdown
+                      a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false') Shop
+                      ul.dropdown-menu
+                        li.nav-item
+                          a.nav-link(href='/product/all_products') All Products
+                        li.nav-item
+                          a.nav-link(href='/product/category/Sports') Sports 
+                        li.nav-item
+                          a.nav-link(href='/product/category/Formal') Formal
+                        li.nav-item
+                          a.nav-link(href='/product/category/Sneakers') Sneakers
+                        li.nav-item
+                          a.nav-link(href='/product/category/Casual') Casual
+                    li.nav-item
+                      a.nav-link(href='/contact') Contact
+                else
+                  li.nav-item.submenu.dropdown
+                    a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false') Shop
+                    ul.dropdown-menu
+                      li.nav-item
+                        a.nav-link(href='/product/all_products') All Products
+                      li.nav-item
+                        a.nav-link(href='/product/category/Sports') Sports 
+                      li.nav-item
+                        a.nav-link(href='/product/category/Formal') Formal
+                      li.nav-item
+                        a.nav-link(href='/product/category/Sneakers') Sneakers
+                      li.nav-item
+                        a.nav-link(href='/product/category/Casual') Casual
+                  li.nav-item
+                    a.nav-link(href='/contact') Contact
+                if user
+                  li.nav-item.submenu.dropdown
+                    a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                      span.lnr.lnr-user#user-icon
+                    ul.dropdown-menu
+                      if user.username !== "admin"
+                        li.nav-item
+                          a.nav-link(href='/users/orders') Orders
+                        li.nav-item
+                          a.nav-link(href='/') Tracking
+                        li.nav-item
+                          a.nav-link(href='/users/wishlist') Wishlist
+                        li.nav-item
+                          a.nav-link(href='/users/logout') Logout
+                      else
+                        li.nav-item
+                          a.nav-link(href='/admin/logout') Logout
+                else
+                  li.nav-item
+                    a.nav-link(href='/users/login') Log In
+              ul.nav.navbar-nav.navbar-right
+                if user && user.username !== "admin"
+                  li.nav-item
+                    a.cart(href='/users/cart')
+                      span.lnr.lnr-cart.cart_icon
+                li.nav-item
+                  button.search
+                    span#search.lnr.lnr-magnifier
+      #search_input_box.search_input
+        .container
+          form.d-flex.justify-content-between
+            input#search_input.form-control(type='text', placeholder='Search Here')
+            button.btn(type='submit')
+            span#close_search.lnr.lnr-cross(title='Close Search')
+    // End Header Area
+    // Start Banner Area
+    section.banner-area.organic-breadcrumb
+      .container
+        .breadcrumb-banner.d-flex.flex-wrap.align-items-center.justify-content-end
+          .col-first
+            h1 Checkout
+            nav.d-flex.align-items-center
+              a(href='/')
+                | Home
+                span.lnr.lnr-arrow-right
+                | User
+                span.lnr.lnr-arrow-right
+              a(href='/') Confirmation
+    // End Banner Area
+    .container
+      != messages('message',locals)
+    // ================Order Details Area =================
+    section.order_details.section_gap
+      .container
+        .row.order_d_inner
+          .col-lg-4
+            .details_item
+              h4 Order Info
+              ul.list
+                li
+                  a(href='#')
+                    span Order number
+                    |  #{order.order_number}
+                li
+                  a(href='#')
+                    span Date
+                    |  #{order.date.getDate()}/#{order.date.getMonth()}/#{order.date.getFullYear()}
+                li
+                  a(href='#')
+                    span Total
+                    |  #{order.amount} ₹
+                li
+                  a(href='#')
+                    span Payment method
+                    |  #{order.mode}
+          .col-lg-4
+            .details_item
+              h4 Billing Address
+              ul.list
+                li
+                  a(href='#')
+                    span Street
+                    |  : #{bill[0]}
+                li
+                  a(href='#')
+                    span City
+                    |  : #{bill[1]}
+                li
+                  a(href='#')
+                    span State
+                    |  : #{bill[2]}
+                li
+                  a(href='#')
+                    span Country 
+                    |  : #{bill[3]}
+          .col-lg-4
+            .details_item
+              h4 Shipping Address
+              ul.list
+                li
+                  a(href='#')
+                    span Street
+                    |  : #{ship[0]}
+                li
+                  a(href='#')
+                    span City
+                    |  : #{ship[1]}
+                li
+                  a(href='#')
+                    span State
+                    |  : #{ship[2]}
+                li
+                  a(href='#')
+                    span Country 
+                    |  : #{ship[3]}
+        .order_details_table
+          h2 Order Details
+          .table-responsive
+            table.table
+              thead
+                tr
+                  th(scope='col')
+                    h4 Product
+                  th(scope='col')
+                    h4 Price
+                  th(scope='col')
+                    h4 Quantity
+                  th(scope='col')
+                    h4 Total
+              tbody
+                each product ,i in order.products
+                  tr
+                    td
+                      a(href='#')
+                      | #{product.product_id.name}
+                    td #{product.product_id.price} ₹
+                    td #{product.quantity}
+                    td.item_total(id=product.id)= product.quantity*product.product_id.price + " ₹"
+                tr
+                  td
+                    h4 SUBTOTAL
+                  td
+                  td
+                  td
+                    h4.sub_total
+                tr
+                  td
+                    h4 SHIPPING
+                  td
+                  td
+                  td
+                    h4.l-through 100.00 ₹
+                tr
+                  td
+                    h4 TOTAL
+                  td
+                  td
+                  td
+                    h4.sub_total
+        .row
+          .col-lg-10
+          .col-lg-1
+            button.btn.btn-success(style="margin:10px;margin-left:16px" onclick='invoice(\''+order.order_number+'\')') Generate Invoice
+    // ================End Order Details Area =================
+    // start footer Area
+    footer.footer-area.section_gap
+      .container
+        .row
+          .col-lg-4
+          .col-lg-4.col-md-6.col-sm-6
+            .single-footer-widget
+              h6.footer_1 About Us
+              p.footer_1
+                | SHOPPERS STOP is your place for any type of shoes from hundreds of brands.
+                | Our legacy includes more than 10-years of craftmanship, a passion for quality, with a mission to continue to inspire people
+        .row
+          .col-lg-4
+          .col-lg-4.col-md-6.col-sm-6
+            .single-footer-widget
+              h6.footer_1 Follow Us
+              p.footer_1 Let us be social
+              .footer-social.d-flex.align-items-center.icons_1
+                a(href='#')
+                  i.fa.fa-facebook
+                a(href='#')
+                  i.fa.fa-twitter
+                a(href='#')
+                  i.fa.fa-instagram
+                a(href='#')
+                  i.fa.fa-google
+        .row
+          .col-lg-2
+          .col-lg-8.col-md-6.col-sm-6
+            .footer-bottom.d-flex.justify-content-center.align-items-center.flex-wrap
+              p.footer-text.m-0
+                | Copyright ©
+                script.
+                  document.write(new Date().getFullYear());
+                |  All rights reserved | This website is made with 
+                i.fa.fa-heart-o(aria-hidden='true')
+                |  by Jayesh Menghani
+            // End footer Area
+            script(src='/js/vendor/jquery-2.2.4.min.js')
+            script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js', integrity='sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4', crossorigin='anonymous')
+            script(src='/js/vendor/bootstrap.min.js')
+            script(src='/js/jquery.ajaxchimp.min.js')
+            script(src='/js/jquery.nice-select.min.js')
+            script(src='/js/jquery.sticky.js')
+            script(src='/js/nouislider.min.js')
+            script(src='/js/jquery.magnific-popup.min.js')
+            script(src='/js/owl.carousel.min.js')
+            script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE')
+            script(src='/js/gmaps.min.js')
+            script(src='/js/main.js')
+            script(src='/js/personal.js')

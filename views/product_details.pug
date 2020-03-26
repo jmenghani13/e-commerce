@@ -1,0 +1,445 @@
+doctype html
+html.no-js
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    link(rel='shortcut icon', href='/img/fav.png')
+    meta(name='author', content='CodePixar')
+    meta(name='description', content='')
+    meta(name='keywords', content='')
+    meta(charset='UTF-8')
+    title Shoppers Stop
+    link(rel='stylesheet', href='/css/linearicons.css')
+    link(rel='stylesheet', href='/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/css/themify-icons.css')
+    link(rel='stylesheet', href='/css/bootstrap.css')
+    link(rel='stylesheet', href='/css/owl.carousel.css')
+    link(rel='stylesheet', href='/css/nice-select.css')
+    link(rel='stylesheet', href='/css/nouislider.min.css')
+    link(rel='stylesheet', href='/css/ion.rangeSlider.css')
+    link(rel='stylesheet', href='/css/ion.rangeSlider.skinFlat.css')
+    link(rel='stylesheet', href='/css/magnific-popup.css')
+    link(rel='stylesheet', href='/css/main.css')
+    link(rel='stylesheet', href='/css/personal.css')
+  body
+    header.header_area.sticky-header
+      .main_menu
+        nav.navbar.navbar-expand-lg.navbar-light.main_box
+          .container
+            a.navbar-brand.logo_h(href='/')
+              img(src='/img/fav.png' alt="logo") 
+            a.navbar-brand.logo_h(href='/')
+              h2.heading_1 SHOPPERS STOP
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            #navbarSupportedContent.collapse.navbar-collapse.offset
+              ul.nav.navbar-nav.menu_nav.ml-auto
+                li.nav-item
+                  a.nav-link(href='/') Home
+                if user
+                  if user.username == "admin"
+                    li.nav-item.submenu.dropdown
+                      a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false') Product
+                      ul.dropdown-menu
+                        li.nav-item
+                          a.nav-link(href='/product/all_products') All Products
+                        li.nav-item
+                          a.nav-link(href='/') Product Details
+                        li.nav-item
+                          a.nav-link(href='/product/add_product') Add Product
+                    li.nav-item
+                      a.nav-link(href='/admin/orders') Orders 
+                  else 
+                    li.nav-item.submenu.dropdown
+                      a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false') Shop
+                      ul.dropdown-menu
+                        li.nav-item
+                          a.nav-link(href='/product/all_products') All Products
+                        li.nav-item
+                          a.nav-link(href='/product/category/Sports') Sports 
+                        li.nav-item
+                          a.nav-link(href='/product/category/Formal') Formal
+                        li.nav-item
+                          a.nav-link(href='/product/category/Sneakers') Sneakers
+                        li.nav-item
+                          a.nav-link(href='/product/category/Casual') Casual
+                    li.nav-item
+                      a.nav-link(href='/') Contact
+                  li.nav-item.submenu.dropdown
+                    a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                      span.lnr.lnr-user#user-icon
+                    ul.dropdown-menu
+                      if user.username !== "admin"
+                        li.nav-item
+                          a.nav-link(href='/users/orders') Orders
+                        li.nav-item
+                          a.nav-link(href='/') Tracking
+                        li.nav-item
+                          a.nav-link(href='/users/wishlist') Wishlist
+                        li.nav-item
+                          a.nav-link(href='/users/logout') Logout
+                      else
+                        li.nav-item
+                          a.nav-link(href='/admin/logout') Logout
+                else
+                  li.nav-item
+                    a.nav-link(href='/users/login') Log In
+              ul.nav.navbar-nav.navbar-right
+                if user
+                  li.nav-item
+                    a.cart(href='/users/cart')
+                      span.ti-bag
+                li.nav-item
+                  button.search
+                    span#search.lnr.lnr-magnifier
+      #search_input_box.search_input
+        .container
+          form.d-flex.justify-content-between
+            input#search_input.form-control(type='text', placeholder='Search Here')
+            button.btn(type='submit')
+            span#close_search.lnr.lnr-cross(title='Close Search')
+    // End Header Area
+    // Start Banner Area
+    section.banner-area.organic-breadcrumb
+      .container
+        .breadcrumb-banner.d-flex.flex-wrap.align-items-center.justify-content-end
+          .col-first
+            h1 Product Details
+            nav.d-flex.align-items-center
+              a(href='/')
+                | Home
+                span.lnr.lnr-arrow-right
+              a(href='/product/product_details/'+product.id) Product Details
+    // End Banner Area
+    .container
+      != messages('message',locals)
+    // ================Single Product Area =================
+    .product_image_area
+      .container
+        .row.s_product_inner
+          .col-lg-6
+            .s_Product_carousel
+              .single-prd-item
+                img.img-fluid(src='/photos/'+ product.picture, alt='')
+              .single-prd-item
+                img.img-fluid(src='/photos/'+ product.picture, alt='')
+              .single-prd-item
+                img.img-fluid(src='/photos/'+ product.picture, alt='')
+          .col-lg-5.offset-lg-1
+            .s_product_text
+              h3 #{product.name}
+              h2 #{product.price} ₹
+              ul.list
+                li
+                  a.active(href='#')
+                    span Category  :
+                    span  #{product.category}
+                li
+                  a(href='#')
+                    span Availibility  :
+                    if product.stock == 0 
+                      span#avalability_1  Out of stock
+                    else if product.stock < 5 
+                      span#avalability_2  Hurry, only #{product.stock} left
+                    else
+                      span#avalability_3  In Stock
+              p #{product.description}
+              .product_count
+                label(for='qty') Quantity:
+                input#sst.input-text.qty(type='text', name='qty', maxlength='12', value='1', title='Quantity:')
+                button.increase.items-count(onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;", type='button')
+                  i.lnr.lnr-chevron-up
+                button.reduced.items-count(onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;", type='button')
+                  i.lnr.lnr-chevron-down  
+              .card_area.d-flex.align-items-center
+                a.primary-btn(href='#') Add to Cart
+                a.icon_btn(href='#')
+                  i.lnr.lnr.lnr-diamond
+                a.icon_btn(href='#')
+                  i.lnr.lnr.lnr-heart
+    // ================End Single Product Area =================
+    // ================Product Description Area =================
+    section.product_description_area
+      .container
+        ul#myTab.nav.nav-tabs(role='tablist')
+          li.nav-item
+            a#home-tab.nav-link(data-toggle='tab', href='#home', role='tab', aria-controls='home', aria-selected='true') Description
+          li.nav-item
+            a#profile-tab.nav-link(data-toggle='tab', href='#profile', role='tab', aria-controls='profile', aria-selected='false') Specification
+          li.nav-item
+            a#contact-tab.nav-link(data-toggle='tab', href='#contact', role='tab', aria-controls='contact', aria-selected='false') Comments
+          li.nav-item
+            a#review-tab.nav-link.active(data-toggle='tab', href='#review', role='tab', aria-controls='review', aria-selected='false') Reviews
+        #myTabContent.tab-content
+          #home.tab-pane.fade(role='tabpanel', aria-labelledby='home-tab')
+            p #{product.description}
+          #profile.tab-pane.fade(role='tabpanel', aria-labelledby='profile-tab')
+            .table-responsive
+              table.table
+                tbody
+                  tr
+                    td
+                      h5 Name
+                    td
+                      h5 #{product.name}
+                  tr
+                    td
+                      h5 Price 
+                    td
+                      h5 #{product.price} ₹
+                  tr
+                    td
+                      h5 Brand
+                    td
+                      h5 #{product.brand}
+                  tr
+                    td
+                      h5 Material
+                    td
+                      h5 #{product.specification.material}
+                  tr
+                    td
+                      h5 Closure
+                    td
+                      h5 #{product.specification.closure}
+                  tr
+                    td
+                      h5 Padding
+                    td
+                      h5 #{product.specification.padding}
+                  tr
+                    td
+                      h5 Heel Height
+                    td
+                      h5 #{product.specification.heel_height}
+          #contact.tab-pane.fade(role='tabpanel', aria-labelledby='contact-tab')
+            .row
+              .col-lg-6
+                .comment_list
+                  div
+                  each comment, i in product.comments
+                    .review_item
+                      .media
+                        .d-flex
+                          img(src='/photos/empty_profile.png', height="40px" width="40px" alt='')
+                        .media-body
+                          h4 #{comment.comment_name}
+                          h5 #{comment.comment_date}
+                      p #{comment.comment_text}
+                  div#temp_1
+                    if product.comments.length == 0
+                      h1#zero_comment(style="text-align:center") Be the first one to comment on this product
+              .col-lg-6
+                .review_box
+                  h4 Post a comment
+                  form#contactForm.row.contact_form
+                    .col-md-12
+                      .form-group
+                        input#comment_name.form-control(type='text', name='comment_name', placeholder='Your Full Name')
+                    .col-md-12
+                      .form-group
+                        input#comment_email.form-control(type='email', name='comment_email', placeholder='Email Address')
+                    .col-md-12
+                      .form-group
+                        textarea#comment_text.form-control(name='comment_text', rows='1', placeholder='Comment Here')
+                    .col-md-12.text-right
+                      button.btn.primary-btn(type="submit") Comment
+          #review.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='review-tab')
+            .row
+              .col-lg-6
+                .row.total_rate
+                  .col-6
+                    .box_total
+                      h5 Overall
+                      - var sum = 0;
+                      - var one=0;
+                      - var two=0;
+                      - var three=0;
+                      - var four=0;
+                      - var five=0;
+                      - for(var i=0;i<product.reviews.length;i++){
+                      -  sum = sum + product.reviews[i].review_rating;
+                      -  if(product.reviews[i].review_rating==1){
+                      -    one++;}
+                      -  if(product.reviews[i].review_rating==2){
+                      -    two++;}
+                      -  if(product.reviews[i].review_rating==3){
+                      -    three++;}
+                      -  if(product.reviews[i].review_rating==4){
+                      -    four++;}
+                      -  if(product.reviews[i].review_rating==5){
+                      -    five++;}
+                      - }
+                      - var average =sum/product.reviews.length;
+                      - if(product.reviews.length == 0){
+                      - average = 0;}
+                      h4#avg_review #{average.toFixed(2)}
+                      p#secret(style="display:none") #{product.reviews.length} 
+                      h6#update1 (#{product.reviews.length} Reviews)
+                  .col-6
+                    .rating_list
+                      h3#update2 Based on #{product.reviews.length} Reviews
+                      ul.list
+                        li
+                          a(href='#')
+                            | 5 Star 
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            span#five  #{five}
+                        li
+                          a(href='#')
+                            | 4 Star 
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            span#four  #{four}
+                        li
+                          a(href='#')
+                            | 3 Star 
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            span#three  #{three}
+                        li
+                          a(href='#')
+                            | 2 Star 
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            span#two  #{two}
+                        li
+                          a(href='#')
+                            | 1 Star 
+                            i.fa.fa-star
+                            span#one  #{one}
+                .review_list
+                  div
+                    each review in product.reviews
+                      .review_item
+                        .media
+                          .d-flex
+                            img(src='/photos/empty_profile.png', height="50px" width="50px" alt='')
+                          .media-body
+                            h4 #{review.review_name}
+                            h5 #{review.review_date}
+                            - for(var i=0;i<review.review_rating;i++)
+                                i.fa.fa-star
+                        p #{review.review_text}
+                  div#temp_2
+                    if product.reviews.length == 0
+                      h1#zero_review(style="text-align:center") Be the first one to review this product
+              .col-lg-6
+                .review_box
+                  h4 Add a Review
+                  p Your Rating:
+                  div.stars(data-rating="0")
+                    span.star  
+                    span.star  
+                    span.star  
+                    span.star  
+                    span.star
+                  form#contactForm2.row.contact_form
+                    .col-md-12
+                      .form-group
+                        input#review_name.form-control(type='text', name='review_name', placeholder='Your Full Name', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Your Full Name'")
+                    .col-md-12
+                      .form-group
+                        input#review_email.form-control(type='email', name='review_email', placeholder='Email Address', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Email Address'")
+                    .col-md-12
+                      .form-group
+                        textarea#review_text.form-control(name='review_text', rows='1', placeholder='Review', onfocus="this.placeholder = ''", onblur="this.placeholder = 'Review'")
+                    .col-md-12.text-right
+                      button.primary-btn(value='submit') Submit Now
+    // ================End Product Description Area =================
+    // Start related-product Area
+    section.related-product-area.section_gap_bottom
+      .container
+        .row.justify-content-center
+          .col-lg-6.text-center
+            .section-title
+              h1 You might also like
+        .row
+          .col-lg-9
+            h3 #{product.category} Collection
+            .row
+              for c_product,i in c_products
+                if product.id !== c_product.id
+                  .col-lg-4.col-md-4.col-sm-6.mb-20
+                    .single-related-product.d-flex
+                      a(href='/product/product_details/'+c_product.id)
+                        img( src='/photos/'+c_product.picture alt=c_product.name height="100px" width="100px") 
+                      .desc
+                        a.title(href='/product/product_details/'+c_product.id) #{c_product.name}
+                        .price
+                          h6 #{c_product.price} ₹
+            h3 #{product.brand} Collection
+            .row
+              for b_product,i in b_products
+                if product.id !== b_product.id
+                  .col-lg-4.col-md-4.col-sm-6.mb-20
+                    .single-related-product.d-flex
+                      a(href='/product/product_details/'+b_product.id)
+                        img(src='/photos/'+b_product.picture alt=b_product.name height="100px" width="100px")
+                      .desc
+                        a.title(href='/product/product_details/'+b_product.id) #{b_product.name}
+                        .price
+                          h6 #{b_product.price} ₹
+          .col-lg-3
+            .ctg-right
+              a(href='#', target='_blank')
+                img.img-fluid.d-block.mx-auto(src='/img/category/c5.jpg', alt='')
+    // End related-product Area
+    // start footer Area
+    footer.footer-area.section_gap
+      .container
+        .row
+          .col-lg-4
+          .col-lg-4.col-md-6.col-sm-6
+            .single-footer-widget
+              h6.footer_1 About Us
+              p.footer_1
+                | SHOPPERS STOP is your place for any type of shoes from hundreds of brands.
+                | Our legacy includes more than 10-years of craftmanship, a passion for quality, with a mission to continue to inspire people.
+        .row
+          .col-lg-4
+          .col-lg-4.col-md-6.col-sm-6
+            .single-footer-widget
+              h6.footer_1 Follow Us
+              p.footer_1 Let us be social
+              .footer-social.d-flex.align-items-center.icons_1
+                a(href='#')
+                  i.fa.fa-facebook
+                a(href='#')
+                  i.fa.fa-twitter
+                a(href='#')
+                  i.fa.fa-instagram
+                a(href='#')
+                  i.fa.fa-google
+        .row
+          .col-lg-2
+          .col-lg-8.col-md-6.col-sm-6
+            .footer-bottom.d-flex.justify-content-center.align-items-center.flex-wrap
+              p.footer-text.m-0
+                | Copyright ©
+                script.
+                  document.write(new Date().getFullYear());
+                |  All rights reserved | This website is made with 
+                i.fa.fa-heart-o(aria-hidden='true')
+                |  by Jayesh Menghani
+                // End footer Area
+            script(src='/js/vendor/jquery-2.2.4.min.js')
+            script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js', integrity='sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4', crossorigin='anonymous')
+            script(src='/js/vendor/bootstrap.min.js')
+            script(src='/js/jquery.ajaxchimp.min.js')
+            script(src='/js/jquery.nice-select.min.js')
+            script(src='/js/jquery.sticky.js')
+            script(src='/js/nouislider.min.js')
+            script(src='/js/jquery.magnific-popup.min.js')
+            script(src='/js/owl.carousel.min.js')
+            script(src='/js/gmaps.min.js')
+            script(src='/js/main.js')
+            script(src='/js/personal.js')

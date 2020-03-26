@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+  <invoice_number>3565-358276-3189</invoice_number>
+  <order_number>3560-665212-5666</order_number>
+  <user_id>5e74823c9e2262381c7f5f95</user_id>
+  <products>
+    <product_id>5e58d9d8bcfdd517789288da</product_id>
+    <quantity>1</quantity>
+  </products>
+  <amount>2499</amount>
+  <billing_address>G2 SRK Ashiyana, 11 Jamana Nagar/Indore/Madhya Pradesh - 452001/India</billing_address>
+  <shipping_address>G2 SRK Ashiyana, 11 Jamana Nagar/Indore/Madhya Pradesh - 452001/India</shipping_address>
+  <mode>Cash On Delivery</mode>
+</root>

@@ -1,0 +1,427 @@
+doctype html
+html.no-js
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    link(rel='shortcut icon', href='/img/fav.png')
+    meta(name='author', content='CodePixar')
+    meta(name='description', content='')
+    meta(name='keywords', content='')
+    meta(charset='UTF-8')
+    title Shoppers Stop
+    link(rel='stylesheet', href='/css/linearicons.css')
+    link(rel='stylesheet', href='/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/css/themify-icons.css')
+    link(rel='stylesheet', href='/css/bootstrap.css')
+    link(rel='stylesheet', href='/css/owl.carousel.css')
+    link(rel='stylesheet', href='/css/nice-select.css')
+    link(rel='stylesheet', href='/css/nouislider.min.css')
+    link(rel='stylesheet', href='/css/ion.rangeSlider.css')
+    link(rel='stylesheet', href='/css/ion.rangeSlider.skinFlat.css')
+    link(rel='stylesheet', href='/css/magnific-popup.css')
+    link(rel='stylesheet', href='/css/main.css')
+    link(rel='stylesheet', href='/css/personal.css')
+  body#category
+    // Start Header Area
+    header.header_area.sticky-header
+      .main_menu
+        nav.navbar.navbar-expand-lg.navbar-light.main_box
+          .container
+            a.navbar-brand.logo_h(href='/')
+              img(src='/img/fav.png' alt="logo") 
+            a.navbar-brand.logo_h(href='/')
+              h2.heading_1 SHOPPERS STOP
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            // Collect the nav links, forms, and other content for toggling
+            #navbarSupportedContent.collapse.navbar-collapse.offset
+              ul.nav.navbar-nav.menu_nav.ml-auto
+                li.nav-item
+                  a.nav-link(href='/') Home
+                if user
+                  if user.username == "admin"
+                    li.nav-item.submenu.dropdown.active
+                      a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false') Product
+                      ul.dropdown-menu
+                        li.nav-item.active
+                          a.nav-link(href='/product/all_products') All Products
+                        li.nav-item
+                          a.nav-link(href='/') Product Details
+                        li.nav-item
+                          a.nav-link(href='/product/add_product') Add Product
+                    li.nav-item
+                      a.nav-link(href='/admin/orders') Orders 
+                  else 
+                    li.nav-item.submenu.dropdown.active
+                      a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false') Shop
+                      ul.dropdown-menu
+                        li.nav-item
+                          a.nav-link(href='/product/all_products') All Products
+                        li.nav-item
+                          a.nav-link(href='/product/category/Sports') Sports 
+                        li.nav-item
+                          a.nav-link(href='/product/category/Formal') Formal
+                        li.nav-item
+                          a.nav-link(href='/product/category/Sneakers') Sneakers
+                        li.nav-item
+                          a.nav-link(href='/product/category/Casual') Casual
+                    li.nav-item
+                      a.nav-link(href='/') Contact
+                  li.nav-item.submenu.dropdown
+                    a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                      span.lnr.lnr-user#user-icon
+                    ul.dropdown-menu
+                      if user.username !== "admin"
+                        li.nav-item
+                          a.nav-link(href='/users/orders') Orders
+                        li.nav-item
+                          a.nav-link(href='/') Tracking
+                        li.nav-item
+                          a.nav-link(href='/users/wishlist') Wishlist
+                        li.nav-item
+                          a.nav-link(href='/users/logout') Logout
+                      else
+                        li.nav-item
+                          a.nav-link(href='/admin/logout') Logout
+                else
+                  li.nav-item
+                    a.nav-link(href='/users/login') Log In
+              ul.nav.navbar-nav.navbar-right
+                if user
+                  li.nav-item
+                    a.cart(href='/users/cart')
+                      span.ti-bag
+                li.nav-item
+                  button.search
+                    span#search.lnr.lnr-magnifier
+      #search_input_box.search_input
+        .container
+          form.d-flex.justify-content-between
+            input#search_input.form-control(type='text', placeholder='Search Here')
+            button.btn(type='submit')
+            span#close_search.lnr.lnr-cross(title='Close Search')
+    // End Header Area
+    // Start Banner Area
+    section.banner-area.organic-breadcrumb
+      .container
+        .breadcrumb-banner.d-flex.flex-wrap.align-items-center.justify-content-end
+          .col-first
+            h1 #{category}
+            nav.d-flex.align-items-center
+              a(href='/')
+                | Home
+                span.lnr.lnr-arrow-right
+                | Product
+                span.lnr.lnr-arrow-right
+              a(href='/product/category/'+category) #{category}
+    // End Banner Area
+    .container
+      .row
+        .col-xl-3.col-lg-4.col-md-5
+          .sidebar-categories
+            .head Browse Categories
+            ul.main-categories
+              li.main-nav-list
+                a(href='/product/category/Sports')
+                  span.lnr.lnr-arrow-right
+                  | Sports
+              li.main-nav-list
+                a(href='/product/category/Formal')
+                  span.lnr.lnr-arrow-right
+                  | Formal
+              li.main-nav-list
+                a(href='/product/category/Sneakers')
+                  span.lnr.lnr-arrow-right
+                  | Sneakers
+              li.main-nav-list
+                a(href='/product/category/Casual')
+                  span.lnr.lnr-arrow-right
+                  | Casual
+          .sidebar-filter.mt-50
+            .top-filter-head Product Filters
+            .common-filter
+              .head Brands
+              form(action='#')
+                ul
+                  li.filter-list
+                    input#Adidas.pixel-radio(type='radio', name='brand')
+                    label(for='Adidas')
+                      | Adidas
+                      span (#{adidas})
+                  li.filter-list
+                    input#Bata.pixel-radio(type='radio', name='brand')
+                    label(for='Bata')
+                      | Bata
+                      span (#{bata})
+                  li.filter-list
+                    input#Puma.pixel-radio(type='radio', name='brand')
+                    label(for='Puma')
+                      | Puma
+                      span (#{puma})
+                  li.filter-list
+                    input#Nike.pixel-radio(type='radio', name='brand')
+                    label(for='Nike')
+                      | Nike
+                      span (#{nike})
+                  li.filter-list
+                    input#Woodland.pixel-radio(type='radio', name='brand')
+                    label(for='Woodland')
+                      | Woodland
+                      span (#{woodland})
+            .common-filter
+              .head Material
+              form(action='#')
+                ul
+                  li.filter-list
+                    input#Leather.pixel-radio(type='radio', name='color')
+                    label(for='Leather')
+                      | Leather
+                      span (29)
+                  li.filter-list
+                    input#Mesh.pixel-radio(type='radio', name='color')
+                    label(for='Mesh')
+                      | Mesh
+                      span (29)
+                  li.filter-list
+                    input#Foam.pixel-radio(type='radio', name='color')
+                    label(for='Foam')
+                      | Foam
+                      span (19)
+                  li.filter-list
+                    input#Textile.pixel-radio(type='radio', name='color')
+                    label(for='Textile')
+                      | Textile
+                      span (19)
+                  li.filter-list
+                    input#Rubber.pixel-radio(type='radio', name='color')
+                    label(for='Rubber')
+                      | Rubber
+                      span (19)
+            .common-filter
+              .head Price
+              .price-range-area
+                #price-range
+                .value-wrapper.d-flex
+                  .price Price:
+                  span ₹
+                  #lower-value
+                  .to to
+                  span ₹
+                  #upper-value
+        .col-xl-9.col-lg-8.col-md-7
+          // Start Filter Bar
+          .filter-bar.d-flex.flex-wrap.align-items-center
+            .sorting
+              select 
+                option(value='1') Sort By
+                option(value='1') Price : Low to High
+                option(value='1') Price : High to Low
+            .pagination
+              a.prev-arrow(href='#')
+                i.fa.fa-long-arrow-left(aria-hidden='true')
+              a.active(href='#') 1
+              a(href='#') 2
+              a(href='#') 3
+              a.dot-dot(href='#')
+                i.fa.fa-ellipsis-h(aria-hidden='true')
+              a(href='#') 6
+              a.next-arrow(href='#')
+                i.fa.fa-long-arrow-right(aria-hidden='true')
+          // End Filter Bar
+          // Start Best Seller
+          section.lattest-product-area.pb-40.category-list
+            .row
+              // single product
+              for product,i in products
+                .col-lg-4.col-md-6
+                  .single-product
+                    img.img-fluid(src='/photos/'+product.picture alt=product.name)
+                    .product-details
+                      h6 #{product.name}
+                      .price
+                        h6 #{product.price} ₹
+                      .prd-bottom
+                        a.social-info(href='javascript:add_to_cart(\''+product.id+'\')')
+                          span.ti-bag
+                          p.hover-text Add to Cart
+                        a.social-info(href='javascript:add_to_wishlist(\''+product.id+'\')')
+                          span.lnr.lnr-heart
+                          p.hover-text Wishlist
+                        a.social-info(href='')
+                          span.lnr.lnr-sync
+                          p.hover-text Compare
+                        a.social-info(href='/product/product_details/'+product.id)
+                          span.lnr.lnr-move
+                          p.hover-text View More
+                
+          // End Best Seller
+          // Start Filter Bar
+          .filter-bar.d-flex.flex-wrap.align-items-center
+            .sorting.mr-auto
+              select
+                option(value='1') Show 12
+                option(value='1') Show 12
+                option(value='1') Show 12
+            .pagination
+              a.prev-arrow(href='#')
+                i.fa.fa-long-arrow-left(aria-hidden='true')
+              a.active(href='#') 1
+              a(href='#') 2
+              a(href='#') 3
+              a.dot-dot(href='#')
+                i.fa.fa-ellipsis-h(aria-hidden='true')
+              a(href='#') 6
+              a.next-arrow(href='#')
+                i.fa.fa-long-arrow-right(aria-hidden='true')
+          // End Filter Bar
+          // Start related-product Area
+    section.related-product-area.section_gap
+      .container
+        .row.justify-content-center
+          .col-lg-6.text-center
+            .section-title
+              h1 Deals of the Week
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                | magna aliqua.
+        .row
+          .col-lg-9
+            .row
+              .col-lg-4.col-md-4.col-sm-6.mb-20
+                .single-related-product.d-flex
+                  a(href='#')
+                    img(src='/img/r1.jpg', alt='')
+                  .desc
+                    a.title(href='#') Black lace Heels
+                    .price
+                      h6 $189.00
+                      h6.l-through $210.00
+              .col-lg-4.col-md-4.col-sm-6.mb-20
+                .single-related-product.d-flex
+                  a(href='#')
+                    img(src='/img/r2.jpg', alt='')
+                  .desc
+                    a.title(href='#') Black lace Heels
+                    .price
+                      h6 $189.00
+                      h6.l-through $210.00
+              .col-lg-4.col-md-4.col-sm-6.mb-20
+                .single-related-product.d-flex
+                  a(href='#')
+                    img(src='/img/r3.jpg', alt='')
+                  .desc
+                    a.title(href='#') Black lace Heels
+                    .price
+                      h6 $189.00
+                      h6.l-through $210.00
+              .col-lg-4.col-md-4.col-sm-6.mb-20
+                .single-related-product.d-flex
+                  a(href='#')
+                    img(src='/img/r5.jpg', alt='')
+                  .desc
+                    a.title(href='#') Black lace Heels
+                    .price
+                      h6 $189.00
+                      h6.l-through $210.00
+              .col-lg-4.col-md-4.col-sm-6.mb-20
+                .single-related-product.d-flex
+                  a(href='#')
+                    img(src='/img/r6.jpg', alt='')
+                  .desc
+                    a.title(href='#') Black lace Heels
+                    .price
+                      h6 $189.00
+                      h6.l-through $210.00
+              .col-lg-4.col-md-4.col-sm-6.mb-20
+                .single-related-product.d-flex
+                  a(href='#')
+                    img(src='/img/r7.jpg', alt='')
+                  .desc
+                    a.title(href='#') Black lace Heels
+                    .price
+                      h6 $189.00
+                      h6.l-through $210.00
+              .col-lg-4.col-md-4.col-sm-6
+                .single-related-product.d-flex
+                  a(href='#')
+                    img(src='/img/r9.jpg', alt='')
+                  .desc
+                    a.title(href='#') Black lace Heels
+                    .price
+                      h6 $189.00
+                      h6.l-through $210.00
+              .col-lg-4.col-md-4.col-sm-6
+                .single-related-product.d-flex
+                  a(href='#')
+                    img(src='/img/r10.jpg', alt='')
+                  .desc
+                    a.title(href='#') Black lace Heels
+                    .price
+                      h6 $189.00
+                      h6.l-through $210.00
+              .col-lg-4.col-md-4.col-sm-6
+                .single-related-product.d-flex
+                  a(href='#')
+                    img(src='/img/r11.jpg', alt='')
+                  .desc
+                    a.title(href='#') Black lace Heels
+                    .price
+                      h6 $189.00
+                      h6.l-through $210.00
+          .col-lg-3
+            .ctg-right
+              a(href='#', target='_blank')
+                img.img-fluid.d-block.mx-auto(src='/img/category/c5.jpg', alt='')
+    // End related-product Area
+    // start footer Area
+    footer.footer-area.section_gap
+      .container
+        .row
+          .col-lg-4
+          .col-lg-4.col-md-6.col-sm-6
+            .single-footer-widget
+              h6.footer_1 About Us
+              p.footer_1
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
+                | magna aliqua.
+        .row
+          .col-lg-4
+          .col-lg-4.col-md-6.col-sm-6
+            .single-footer-widget
+              h6.footer_1 Follow Us
+              p.footer_1 Let us be social
+              .footer-social.d-flex.align-items-center.icons_1
+                a(href='#')
+                  i.fa.fa-facebook
+                a(href='#')
+                  i.fa.fa-twitter
+                a(href='#')
+                  i.fa.fa-instagram
+                a(href='#')
+                  i.fa.fa-google
+        .row
+          .col-lg-2
+          .col-lg-8.col-md-6.col-sm-6
+            .footer-bottom.d-flex.justify-content-center.align-items-center.flex-wrap
+              p.footer-text.m-0
+                | Copyright ©
+                script.
+                  document.write(new Date().getFullYear());
+                |  All rights reserved | This website is made with 
+                i.fa.fa-heart-o(aria-hidden='true')
+                |  by Jayesh Menghani
+                // End footer Area
+            script(src='/js/vendor/jquery-2.2.4.min.js')
+            script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js', integrity='sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4', crossorigin='anonymous')
+            script(src='/js/vendor/bootstrap.min.js')
+            script(src='/js/jquery.ajaxchimp.min.js')
+            script(src='/js/jquery.nice-select.min.js')
+            script(src='/js/jquery.sticky.js')
+            script(src='/js/nouislider.min.js')
+            script(src='/js/jquery.magnific-popup.min.js')
+            script(src='/js/owl.carousel.min.js')
+            script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE')
+            script(src='/js/gmaps.min.js')
+            script(src='/js/main.js')
+            script(src='/js/personal.js')

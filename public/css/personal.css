@@ -1,0 +1,264 @@
+.alert-error{
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.alert-success_msg{
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.footer_1{
+  text-align: center;
+}
+
+/*icons*/
+
+.icons_1
+{
+  margin-left: 117px;
+}
+
+.heading_1
+{
+  color: #ffbb06;
+  margin-top: 7px;
+}
+
+.reg_form_inner
+{
+  box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.07);
+  height: 100%;
+  text-align: center;
+  padding-top: 115px;
+}
+.reg_form_inner h3
+{
+    color: #222222;
+    text-transform: uppercase;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+.reg_form_inner .reg_form
+{
+    max-width: 1000px;
+    margin: auto;
+}
+
+.reg_form_inner
+{
+  padding-top: 60px;
+}
+
+.reg_form_inner h3
+{
+    margin-bottom: 70px;
+}
+
+.reg_form .form-group input
+{
+  height: 54px;
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  border-radius: 0px;
+  outline: none;
+  box-shadow: none;
+}
+
+.reg_form .form-group textarea
+{
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  border-radius: 0px;
+  outline: none;
+  box-shadow: none;
+}
+
+.reg_form .form-group .creat_account
+{
+  margin-top: 10px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.reg_form .form-group .primary-btn
+{
+  display: block;
+  border-radius: 0px;
+  line-height: 38px;
+  width: 100%;
+  text-transform: uppercase;
+  border: none;
+}
+.reg_form .form-group .primary-btn:hover:before
+{
+    left: 990px;
+}
+.reg_form .form-group a
+{
+  font-size: 14px;
+  color: #777777;
+  font-family: "Roboto", sans-serif;
+  margin-top: 20px;
+  display: block;
+}
+
+#avalability_1{
+  color: red;
+}
+
+#avalability_2{
+  color: red;
+}
+
+#avalability_3{
+  color: green;
+}
+
+.cart_price{
+  width: 100px;
+}
+
+.lnr
+{
+  font-size: 15px;
+}
+
+.cart_icon
+{
+  font-size: 17px;
+  position: relative;
+  right: 5px;
+  down: 14px;
+}
+
+#user-icon
+{
+  position: relative;
+  top:3px;
+}
+
+#cart_icon_active
+{
+  font-size: 17px;
+  position: relative;
+  right: 5px;
+  down: 14px;
+  color: orange;
+}
+
+#map {
+      margin: 30px;
+      height: 400px;
+      width: 100%;
+     }
+
+#tc{
+  color: red;
+}
+
+.l-through {
+  text-decoration: line-through;
+}
+
+.inputs{
+    position: relative;
+    top:-6px;
+    border: 1px solid #ffffff;
+  }
+
+.inputs:hover{
+    border: 1px solid #9ca6af;
+    box-shadow: 0 -5px 5px -5px #333;
+  }
+
+  .inputs:focus {
+    outline: none !important;
+    border: 1px solid #9ca6af;
+    box-shadow: 0 -5px 5px -5px #333;
+  }
+
+  .icons{
+    position: relative;
+    top:3px;
+    left:10px;
+    font-size: 20px;
+
+  }
+
+  #order_button{
+    display: none;
+  }
+
+  #buttonp{
+    position: relative;
+    color: #fff;
+    width: 225px;
+    background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+    font-size: 14px;
+    font-family: "Roboto", sans-serif; */
+  }
+
+  .cross{
+     transition: transform .2s;
+  }
+
+  .cross:hover
+  {
+    color: red;
+    cursor: pointer;
+  }
+
+  .date{
+    width: 130px;
+  }
+
+  .on{
+    width: 180px;
+  }
+
+  .un{
+    width: 160px;
+  }
+
+  .num{
+    width: 200px;
+  }
+
+  .mode{
+    width: 210px;
+  }
+
+
+  .star{
+    color: goldenrod;
+    font-size: 2.0rem;
+    padding: 0 1rem; /* space out the stars */
+  }
+
+  .star::before{
+    content: '\2606';
+    color: #ffcf0e;   /* star outline */
+    cursor: pointer;
+  }
+
+  .star.rated::before{
+    /* the style for a selected star */
+    content: '\2605';  /* filled star */
+    color: #ffcf0e;
+
+  }
+
+  .stars{
+      counter-reset: rateme 0;
+      font-size: 1.5rem;
+      font-family: "Roboto", sans-serif;
+  }
+  .star.rated{
+      counter-increment: rateme 1;
+  }
+  .stars::after{
+      content: counter(rateme) '/5';
+  }
