@@ -7,7 +7,12 @@ $('#contactForm').on('submit', function(e) {
       comment_name: $("#comment_name").val(),
       comment_email: $("#comment_email").val(),
       comment_text: $("#comment_text").val(),
-      comment_date: new Date()
+      comment_date: new Date(),
+      review_rating: 0,
+      review_name: "",
+      review_email: "",
+      review_text: "",
+      review_date: "",
     },
     success: function(data){
             $("#zero_comment").hide();
@@ -33,7 +38,11 @@ $('#contactForm2').on('submit', function(e) {
       review_name: $("#review_name").val(),
       review_email: $("#review_email").val(),
       review_text: $("#review_text").val(),
-      review_date: new Date()
+      review_date: new Date(),
+      comment_name: "",
+      comment_email: "",
+      comment_text: "",
+      comment_date: ""
     },
     success: function(data){
             update_average($(".stars").attr("data-rating"));

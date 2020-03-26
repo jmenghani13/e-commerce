@@ -243,7 +243,7 @@ router.get('/product_details/:id',function(req,res){
 router.put('/product_details/:id',function(req,res){
   Product.findById(req.params.id,function(err,product){
 
-      if(typeof req.body.comment_name !== "undefined" && typeof req.body.comment_email !== "undefined" && typeof req.body.comment_text !== "undefined")
+      if(req.body.comment_name !== "" && req.body.comment_email !== "" && req.body.comment_text !== "")
       {
         const object = {
             comment_name: req.body.comment_name,
@@ -267,7 +267,7 @@ router.put('/product_details/:id',function(req,res){
             }
         });
       }
-      else if(req.body.review_rating !== "0" && typeof req.body.review_name!=="undefined" && typeof req.body.review_email!=="undefined" && typeof req.body.review_text!=="undefined")
+      else if(req.body.review_rating !== "0" &&  req.body.review_name!=="" && req.body.review_email!=="" && req.body.review_text!=="")
       {
           const object = {
               review_rating: req.body.review_rating,

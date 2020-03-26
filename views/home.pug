@@ -137,7 +137,8 @@ html.no-js
                     .add-bag.d-flex.align-items-center
                       a.add-btn(href='')
                         span.lnr.lnr-cross
-                      span.add-text.text-uppercase Add to Bag
+                      if user && user.username!=="admin" 
+                        span.add-text.text-uppercase Add to Bag
                 .col-lg-7
                   .banner-img
                     img.img-fluid(src='img/banner/banner-img.png', alt='')
@@ -154,7 +155,8 @@ html.no-js
                     .add-bag.d-flex.align-items-center
                       a.add-btn(href='')
                         span.lnr.lnr-cross
-                      span.add-text.text-uppercase Add to Bag
+                      if user && user.username!=="admin" 
+                        span.add-text.text-uppercase Add to Bag
                 .col-lg-7
                   .banner-img
                     img.img-fluid(src='img/banner/banner-img.png', alt='')
@@ -255,7 +257,7 @@ html.no-js
                   .price
                     h6 #{nike_products[6].price} ₹
                   .prd-bottom
-                    if user
+                    if user && user.username!=="admin" 
                       a.social-info(href='javascript:add_to_cart(\''+nike_products[6].id+'\')')
                         span.ti-bag
                         p.hover-text Add to Cart
@@ -274,7 +276,7 @@ html.no-js
                   .price
                     h6 #{nike_products[8].price} ₹
                   .prd-bottom
-                    if user
+                    if user && user.username!=="admin" 
                       a.social-info(href='javascript:add_to_cart(\''+nike_products[8].id+'\')')
                         span.ti-bag
                         p.hover-text Add to Cart
@@ -293,7 +295,7 @@ html.no-js
                   .price
                     h6 #{nike_products[9].price} ₹
                   .prd-bottom
-                    if user
+                    if user && user.username!=="admin" 
                       a.social-info(href='javascript:add_to_cart(\''+nike_products[9].id+'\')')
                         span.ti-bag
                         p.hover-text Add to Cart
@@ -312,7 +314,7 @@ html.no-js
                   .price
                     h6 #{nike_products[10].price} ₹
                   .prd-bottom
-                    if user
+                    if user && user.username!=="admin" 
                       a.social-info(href='javascript:add_to_cart(\''+nike_products[10].id+'\')')
                         span.ti-bag
                         p.hover-text Add to Cart
@@ -331,7 +333,7 @@ html.no-js
                   .price
                     h6 #{nike_products[5].price} ₹
                   .prd-bottom
-                    if user
+                    if user && user.username!=="admin" 
                       a.social-info(href='javascript:add_to_cart(\''+nike_products[5].id+'\')')
                         span.ti-bag
                         p.hover-text Add to Cart
@@ -350,7 +352,7 @@ html.no-js
                   .price
                     h6 #{nike_products[3].price} ₹
                   .prd-bottom
-                    if user
+                    if user && user.username!=="admin" 
                       a.social-info(href='javascript:add_to_cart(\''+nike_products[3].id+'\')')
                         span.ti-bag
                         p.hover-text Add to Cart
@@ -369,7 +371,7 @@ html.no-js
                   .price
                     h6 #{nike_products[4].price} ₹
                   .prd-bottom
-                    if user
+                    if user && user.username!=="admin" 
                       a.social-info(href='javascript:add_to_cart(\''+nike_products[4].id+'\')')
                         span.ti-bag
                         p.hover-text Add to Cart
@@ -388,7 +390,7 @@ html.no-js
                   .price
                     h6 #{nike_products[0].price} ₹
                   .prd-bottom
-                    if user
+                    if user && user.username!=="admin" 
                       a.social-info(href='javascript:add_to_cart(\''+nike_products[0].id+'\')')
                         span.ti-bag
                         p.hover-text Add to Cart
@@ -416,7 +418,7 @@ html.no-js
                     .price
                       h6 #{product.price} ₹
                     .prd-bottom
-                      if user
+                      if user && user.username!=="admin" 
                         a.social-info(href='javascript:add_to_cart(\''+product.id+'\')')
                           span.ti-bag
                           p.hover-text Add to Cart
@@ -434,7 +436,7 @@ html.no-js
                   .price
                     h6 #{puma_products[2].price} ₹
                   .prd-bottom
-                    if user
+                    if user && user.username!=="admin" 
                       a.social-info(href='javascript:add_to_cart(\''+puma_products[2].id+'\')')
                         span.ti-bag
                         p.hover-text Add to Cart
@@ -452,7 +454,7 @@ html.no-js
                   .price
                     h6 #{puma_products[3].price} ₹
                   .prd-bottom
-                    if user
+                    if user && user.username!=="admin" 
                       a.social-info(href='javascript:add_to_cart(\''+puma_products[3].id+'\')')
                         span.ti-bag
                         p.hover-text Add to Cart
@@ -498,7 +500,7 @@ html.no-js
                     .price
                       h6 #{product.price} ₹
                     h4 #{product.name}
-                    if user
+                    if user && user.username!=="admin" 
                       .add-bag.d-flex.align-items-center.justify-content-center
                         a.add-btn(href='javascript:add_to_cart(\''+product.id+'\')')
                           span.ti-bag
